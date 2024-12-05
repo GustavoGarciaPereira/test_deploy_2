@@ -77,23 +77,23 @@ WSGI_APPLICATION = 'app_exemplo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  # Usando o backend MySQL
-        'NAME': 'produtos',                  # Substitua pelo nome do seu banco de dados
-        'USER': 'root',                       # Usuário do MySQL
-        'PASSWORD': 'senacrs',                       # Senha do MySQL (adicione a senha se existir)
-        'HOST': '127.0.0.1',                  # Endereço do servidor MySQL
-        'PORT': '3306',                       # Porta padrão do MySQL
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',  # Usando o backend MySQL
+#         'NAME': 'produtos',                  # Substitua pelo nome do seu banco de dados
+#         'USER': 'root',                       # Usuário do MySQL
+#         'PASSWORD': 'senacrs',                       # Senha do MySQL (adicione a senha se existir)
+#         'HOST': '127.0.0.1',                  # Endereço do servidor MySQL
+#         'PORT': '3306',                       # Porta padrão do MySQL
+#     }
+# }
 
 
 # Password validation
@@ -142,3 +142,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'  # Página para onde usuários não logados serão redirecionados
 LOGIN_REDIRECT_URL = 'produto_list'  # Página após login bem-sucedido
 LOGOUT_REDIRECT_URL = 'login'  # Página após logout
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# (Opcional) Diretórios adicionais onde o Django procurará por arquivos estáticos
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
